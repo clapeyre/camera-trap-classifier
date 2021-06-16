@@ -1,0 +1,14 @@
+{
+  "name": "multispec_web",
+  "version": "0.1.0",
+  "description": "Test a multispecies camera trap classifier",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Corentin Lapeyre",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
