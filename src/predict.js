@@ -49,6 +49,7 @@ $("#predictBtn").click(async function () {
 		.resizeNearestNeighbor([224, 224])
 		.expandDims()
 		.toFloat()
+	        .div(255)
 		.reverse(-1); 
 	let predict_result = await model.predict(pre_image).data();
 	console.log(predict_result);
