@@ -21,51 +21,51 @@ const Result = {
     19: 'Sanglier',
     20: 'Tetras',
     21: 'Vache'
-};
+}
 
-$("#image-selector").change(function () {
-	let reader = new FileReader();
+document.querySelector("#image-selector").addEventListener( "change", function () {
+	let reader = new FileReader()
 	reader.onload = function () {
 		let dataURL = reader.result;
-		$("#selected-image").attr("src", dataURL);
-		$("#prediction-list").empty();
+		document.getElementById('selected-image').setAttribute("src", dataURL);
+		document.getElementById("prediction-list").innerHTML = '';
 	}
-
-	let file = $("#image-selector").prop('files')[0];
+	let file = document.getElementById("image-selector").files[0];
 	reader.readAsDataURL(file);
-});
+})
 
-let model;
-$(document).ready(async function () {
-	$('.progress-bar').show();
-	model = await tf.loadLayersModel('model/model.json');
-	$('.progress-bar').hide();
-});
+let model
+document.addEventListener("DOMContentLoaded", async function () {
+	// document.getElementsByClassName('.progress-bar').style.display == "block"
+	model = await tf.loadLayersModel('model/model.json')
+	console.log('Model Loaded')
+	// document.getElementsByClassName('progress-bar').style.display == "none"
+})
 
-$("#predictBtn").click(async function () {
-	let image = $('#selected-image').get(0);
-	
+document.getElementById("predictBtn").addEventListener( "click", async function () {
+	let image = document.getElementById('selected-image')
+	console.log({image: document.getElementById('selected-image')});
 	let pre_image = tf.browser.fromPixels(image, 3)
 		.resizeNearestNeighbor([224, 224])
 		.expandDims()
 		.toFloat()
 	        .div(255)
-		.reverse(-1); 
-	let predict_result = await model.predict(pre_image).data();
-	console.log(predict_result);
+		.reverse(-1) 
+	let predict_result = await model.predict(pre_image).data()
+	console.log(predict_result)
 	let order = Array.from(predict_result)
 		.map(function (p, i) { 
 			return {
 				probability: p,
 				className: Result[i] 
-			};
+			}
 		}).sort(function (a, b) {
-			return b.probability - a.probability;
-		}).slice(0, 5);
-	console.log(order);
+			return b.probability - a.probability
+		}).slice(0, 5)
+	console.log(order)
 
-	$("#prediction-list").empty();
+	document.getElementById("prediction-list").innerHTML = '';
 	order.forEach(function (p) {
-		$("#prediction-list").append(`<li>${p.className}: ${parseInt(Math.trunc(p.probability * 100))} %</li>`);
-	});
-});
+		document.getElementById("prediction-list").insertAdjacentHTML("beforeend",`<li>${p.className}: ${parseInt(Math.trunc(p.probability * 100))} %</li>`)
+	})
+})
