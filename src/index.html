@@ -6,50 +6,36 @@
   <title>What animal?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Detect which animal visited the camera trap in Browser" />
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <main role="main" class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-3">
-        Made with ❤️ at 
-        <a target="_blank" rel="noopener noreferrer" href="https://cerfacs.fr/coop/" class="href">
-          <img src="https://cerfacs.fr/coop/images/landing-page-about-me/logo_coop.png" width="60" alt="">
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="progress progress-bar progress-bar-striped progress-bar-animated mb-2">
-          Loading Model
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <input id="image-selector" class="form-control border-0" type="file" />
-      </div>
-      <div class="col-6">
-        <button id="predictBtn" class="btn btn-primary float-right">
-          Predict
-        </button>
-      </div>
-    </div>
-    <hr />
-    <div class="row">
-      <div class="col-6">
-        <h2 class="ml-3">Image</h2>
-        <img id="selected-image" class="ml-3" width="250" alt="" />
-      </div>
-      <div class="col-6">
-        <h2 class="ml-3">Predictions</h2>
-        <ol id="prediction-list"></ol>
-      </div>
-    </div>
-  </main>
+    <nav>Camera Trap Classifier</nav>
 
+    <div >
+        <input id="image-selector" type="file"/>
+      
+        <button id="predictBtn" >Predict</button>
+    </div>
+
+
+      <div >
+        <h2 >Image</h2>
+        <img id="selected-image"  width="250" alt="" />
+      </div>
+
+      <div >
+        <h2 >
+          Predictions</h2>
+        <ol id="prediction-list">coucou</ol>
+      </div>
+
+  <footer>
+    Made with ❤️ at 
+    <a target="_blank" rel="noopener noreferrer" href="https://cerfacs.fr/coop/" >
+      <img src="https://cerfacs.fr/coop/images/landing-page-about-me/logo_coop.png" width="60" alt="">
+    </a>
+  </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.js" ></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
