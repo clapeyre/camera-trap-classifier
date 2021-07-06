@@ -6,36 +6,68 @@
   <title>What animal?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Detect which animal visited the camera trap in Browser" />
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link href="./tailwind.css" rel="stylesheet">
 </head>
 
-<body>
-    <nav>Camera Trap Classifier</nav>
+<body class="flex flex-col h-screen justify-between">
+    <!-- <nav>Camera Trap Classifier</nav> -->
+    <nav class="bg-gray-800">
+      <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="relative flex items-center justify-between h-16">
+          <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+            <div class="flex-shrink-0 flex items-center">
+              <a class="block lg:hidden h-8 w-auto" target="_blank" rel="noopener" href="https://cerfacs.fr/coop/" >
+                <img class="block lg:hidden h-8 w-auto" src="https://cerfacs.fr/coop/images/landing-page-about-me/logo_coop.png" alt="Coop">
+              </a>
+                <a class="hidden lg:block h-8 w-auto" target="_blank" rel="noopener" href="https://cerfacs.fr/coop/"target="_blank" rel="noopener" href="https://cerfacs.fr/coop/"><img class="hidden lg:block h-8 w-auto" src="https://cerfacs.fr/coop/images/landing-page-about-me/logo_coop.png" alt="Coop"></a>
+                <a class="hidden lg:block h-8 w-auto" target="_blank" rel="noopener" href="https://cerfacs.fr/coop/"target="_blank" rel="noopener" href="https://cerfacs.fr/coop/"><span class="hidden lg:block h-8 w-auto text-white">Camera Trap Classifier</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-    <div >
-        <input id="image-selector" type="file"/>
-      
-        <button id="predictBtn" >Predict</button>
-    </div>
+    <main class="mt-5 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+      <div class="sm:text-center lg:text-left">
+        <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+          <span class="block xl:inline">Classify your</span>
+          <span class="block text-indigo-600 xl:inline">wild animals</span>
+        </h1>
+        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+          Select a file you want to classify.
+        </p>
+        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+              <input id="image-selector" type="file" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 rounded-md shadow"/>
+              <button id="predictBtn" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10 mt-3 sm:mt-0 sm:ml-3">Predict</button>
+        </div>
+      </div>
+      <br>
+      <br>
+      <hr>
+    </main>
 
-
-      <div >
-        <h2 >Image</h2>
-        <img id="selected-image"  width="250" alt="" />
+    <section class="container mx-auto max-w-7xl mx-10 px-2 sm:px-6 lg:px-8 flex justify-around">
+      <div class="text-gray-900 px-3 text-sm font-medium">
+        <h2>Selected Image</h2>
+        <img id="selected-image"  width="180" alt="" />
       </div>
 
-      <div >
-        <h2 >
-          Predictions</h2>
-        <ol id="prediction-list">coucou</ol>
+      <div class="text-gray-900 px-3 text-sm font-medium">
+        <h2>Predictions</h2>
+        <ol id="prediction-list"></ol>
       </div>
+    </section>
 
-  <footer>
-    Made with ❤️ at 
-    <a target="_blank" rel="noopener noreferrer" href="https://cerfacs.fr/coop/" >
+
+  <footer class="h-15 bg-gray-800 text-white flex flex-row justify-center items-center">
+    <span>Made with ❤️ at</span> 
+    <a target="_blank" rel="noopener" href="https://cerfacs.fr/coop/" >
       <img src="https://cerfacs.fr/coop/images/landing-page-about-me/logo_coop.png" width="60" alt="">
     </a>
   </footer>
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.js" ></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
