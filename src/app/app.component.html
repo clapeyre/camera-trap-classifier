@@ -1,0 +1,57 @@
+<!-- <nav>Camera Trap Classifier</nav> -->
+<nav >
+  <a target="_blank" rel="noopener" href="https://cerfacs.fr/coop/" >
+    <img src="https://cerfacs.fr/coop/images/landing-page-about-me/logo_coop.png" alt="Coop">
+  </a>
+    <a target="_blank" rel="noopener" href="https://cerfacs.fr/coop/"target="_blank" rel="noopener" href="https://cerfacs.fr/coop/"><img src="https://cerfacs.fr/coop/images/landing-page-about-me/logo_coop.png" alt="Coop"></a>
+    <a target="_blank" rel="noopener" href="https://cerfacs.fr/coop/"target="_blank" rel="noopener" href="https://cerfacs.fr/coop/"><span >Camera Trap Classifier</span></a>
+</nav>
+
+<label *ngIf="loadingModel" for="file">Loading the AI</label>
+<progress *ngIf="loadingModel" id="file" max="100" value="70"> 70% </progress>
+
+<main >
+    <h1 >
+      <span>Classify your</span>
+      <span>wild animals</span>
+    </h1>
+    <p >
+      Select a file you want to classify.
+    </p>
+          <!-- <input id="image-selector" type="file" (change)="fileEvent($event)"/> -->
+          <form [formGroup]="myForm">
+
+            <!-- <div *ngIf="filePath && filePath !== ''">
+              <img [src]="filePath" [alt]="myForm.value.name" width="180px">
+            </div> -->
+
+            <input type="file" accept="image/*" (change)="imagePreview($event)" />
+
+
+          </form>
+
+          <button id="predictBtn" [disabled]="!filePath || filePath == ''" (click)="predict()">Predict</button>
+
+  <br>
+  <br>
+  <hr>
+</main>
+
+<section >
+    <h2>Selected Image</h2>
+    <img id="selected-image"  width="180" alt="" [src]="filePath"/>
+
+    <h2>Predictions</h2>
+    <!-- <ol id="prediction-list"></ol> -->
+    <ol>
+      <li *ngFor="let prediction of predictions">{{prediction | json}}</li>
+    </ol>
+</section>
+
+
+<footer >
+<span>Made with ❤️ at</span>
+<a target="_blank" rel="noopener" href="https://cerfacs.fr/coop/" >
+  <img src="https://cerfacs.fr/coop/images/landing-page-about-me/logo_coop.png" width="60" alt="">
+</a>
+</footer>
