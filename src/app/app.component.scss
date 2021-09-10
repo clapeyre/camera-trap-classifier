@@ -1,0 +1,15 @@
+.content-outer-container {
+  min-height: calc(100vh - 160px);
+  max-height: calc(100vh - 128px);
+}
+
+.intro {
+  display: flex;
+  font-size: 54px;
+  font-weight: 900;
+}
+
+.footer {
+  position: absolute;
+  bottom: 64px;
+}

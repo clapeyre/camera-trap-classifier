@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup } from "@angular/forms"
 
 import { RESULT } from './result';
 
@@ -15,7 +14,6 @@ export class AppComponent implements OnInit {
   title = 'angular-app'
 
   filePath: string = ''
-  myForm: FormGroup;
 
   loadingModel: Boolean = true;
   model: tf.LayersModel
@@ -28,12 +26,7 @@ export class AppComponent implements OnInit {
   predictions: Array<{probability: number, className: string}>;
 
 
-  constructor(public fb: FormBuilder) {
-    this.myForm = this.fb.group({
-      img: [null],
-      filename: ['']
-    })
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.loadModel();
@@ -44,19 +37,8 @@ export class AppComponent implements OnInit {
     this.loadingModel = false;
   }
 
-  fileEvent(fileInput: Event){
-    let file = (fileInput.target as HTMLInputElement).files
-    let fileName = file![0].name
-  }
-
   imagePreview(e: Event) {
     const file = (e.target as HTMLInputElement).files![0]
-
-    this.myForm.patchValue({
-      img: file
-    })
-
-    this.myForm.get('img')!.updateValueAndValidity()
 
     const reader = new FileReader()
     reader.onload = () => {
