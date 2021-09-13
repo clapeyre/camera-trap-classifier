@@ -1,0 +1,128 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$primary-palette: (
+ 50: #e9edf7,
+ 100: #cad4e1,
+ 200: #abb7c8,
+ 300: #8c9ab0,
+ 400: #75859d,
+ 500: #5d718b,
+ 600: #50637a,
+ 700: #405064,
+ 800: #313d4e,
+ 900: #1f2937,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: rgba(black, 0.87),
+   400: rgba(white, 0.87),
+   500: rgba(white, 0.87),
+   600: rgba(white, 0.87),
+   700: rgba(white, 0.87),
+   800: rgba(white, 0.87),
+   900: rgba(white, 0.87),
+ )
+);
+
+$green-palette: (
+ 50: #e8f4e7,
+ 100: #c9e4c5,
+ 200: #a6d3a1,
+ 300: #83c27b,
+ 400: #6ab660,
+ 500: #51a944,
+ 600: #489a3c,
+ 700: #3d8931,
+ 800: #327828,
+ 900: #1e5916,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: rgba(black, 0.87),
+   400: rgba(black, 0.87),
+   500: rgba(black, 0.87),
+   600: rgba(black, 0.87),
+   700: rgba(black, 0.87),
+   800: rgba(black, 0.87),
+   900: rgba(black, 0.87),
+ )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$angular-app-primary: mat.define-palette($primary-palette, 800);
+$angular-app-accent: mat.define-palette($green-palette, 500, 100, 400);
+
+// The warn palette is optional (defaults to red).
+$angular-app-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$angular-app-theme: mat.define-light-theme((
+  color: (
+    primary: $angular-app-primary,
+    accent: $angular-app-accent,
+    warn: $angular-app-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($angular-app-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body, app-root { height: 100%; margin: 0;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+app-footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+}
+
+app-navbar {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+}
+
+.mat-toolbar {
+  align-content: center;
+  padding: 0 50px;
+}
+
+.mat-toolbar a {
+  display: flex;
+  height: 100%;
+  text-decoration: none;
+}
+
+.mat-toolbar a span {
+  padding: 16px 10px;
+}
+
+.mat-toolbar img {
+  height: 100%;
+}
+
+.mat-toolbar a:visited {
+  color:rgba(white, 0.87);
+}
+
+.mat-toolbar span {
+  margin: 0 10px;
+}
