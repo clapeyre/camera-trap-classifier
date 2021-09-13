@@ -17,7 +17,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'angular-app'
 
-  filePath: string[] = [''];
+  filePath: string = '';
 
   loadingModel: Boolean = true;
   model: tf.LayersModel
@@ -73,34 +73,23 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
    async predict() {
-    console.log('async function works');
     let image = document.getElementById('selected-image') as HTMLImageElement;
-
-      console.log({image});
-
-      let pre_image = tf.browser.fromPixels(image, 3)
-        .resizeNearestNeighbor([224, 224])
-        .expandDims()
-        .toFloat()
-        .div(255)
-        .reverse(-1);
-        console.log({pre_image});
-
-
-      let predictResult = await (this.model.predict(pre_image) as tf.Tensor).data();
-
-      console.log({predictResult});
-
-      this.predictions = Array.from(predictResult)
-        .map( (p, i) => {
-          return {
-            probability: p,
-            className: this.result[i]
-          }
-        }).sort(function (a, b) {
-          return b.probability - a.probability
-        });
-
+    let pre_image = tf.browser.fromPixels(image, 3)
+      .resizeNearestNeighbor([224, 224])
+      .expandDims()
+      .toFloat()
+      .div(255)
+      .reverse(-1);
+    let predictResult = await (this.model.predict(pre_image) as tf.Tensor).data();
+    this.predictions = Array.from(predictResult)
+      .map( (p, i) => {
+        return {
+          probability: p,
+          className: this.result[i]
+        }
+      }).sort(function (a, b) {
+        return b.probability - a.probability
+      });
   }
 
   ngAfterViewInit() {
