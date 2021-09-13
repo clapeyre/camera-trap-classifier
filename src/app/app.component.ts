@@ -7,6 +7,7 @@ import * as tf from '@tensorflow/tfjs'
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import {MatTable} from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   predictResult: Uint8Array | Float32Array | Int32Array;
 
-  predictions: Array<{probability: number, className: string}>;
+  predictions: any;
 
   displayedColumns: string[] = [
     'fileName', 'blaireau', 'brebis', 'cervide', 'chat', 'cheval', 'chevreuil', 'chevre',
@@ -87,9 +88,18 @@ export class AppComponent implements OnInit, AfterViewInit {
           probability: p,
           className: this.result[i]
         }
-      }).sort(function (a, b) {
-        return b.probability - a.probability
-      });
+    })
+    .reduce((map: {[key: string]: number}, obj: {probability: number, className: string}) => {
+      map[obj.className.toLowerCase()] = obj.probability;
+      return map;
+    }, {})
+
+    let data = this.dataSource.data;
+    this.predictions['fileName'] = this.filePath;
+    this.predictions['preview'] = '';
+    data.push(this.predictions);
+    this.dataSource.data = data;
+
   }
 
   ngAfterViewInit() {
