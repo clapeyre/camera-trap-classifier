@@ -1,34 +1,31 @@
 <app-navbar></app-navbar>
 
+<div class="container">
+  <div *ngIf="loadingModel">
+    <p>Loading the AI</p>
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
 
-<div class="content-outer-container">
-  <div class="content-inner-container">
-    <div *ngIf="loadingModel">
-      <p>Loading the AI</p>
-      <mat-spinner color="accent"></mat-spinner>
-    </div>
+  <div *ngIf="!loadingModel" class="wrapper">
+    <main>
+        <h1> Classify your wild animal photos</h1>
+        <button mat-raised-button color="primary" (click)="fileInput.click()">Select Files</button>
+        <input hidden #fileInput type="file" accept="image/*" multiple (change)="imagePreview($event)" />
+        <button mat-raised-button color="accent" id="predictBtn" [disabled]="!filePath" (click)="predict()">Predict</button>
+    </main>
 
-    <div *ngIf="!loadingModel">
-      <main>
-          <h1 class="intro"> Classify your wild animal photos</h1>
-          <button mat-raised-button color="primary" (click)="fileInput.click()">Select Files</button>
-          <input hidden #fileInput type="file" accept="image/*" multiple (change)="imagePreview($event)" />
-          <button mat-raised-button color="accent" id="predictBtn" [disabled]="!filePath" (click)="predict()">Predict</button>
-      </main>
+    <mat-divider></mat-divider>
 
-      <mat-divider></mat-divider>
+    <section >
+        <h2>Selected Image</h2>
+        <img id="selected-image"  width="180" alt="" [src]="filePath"/>
 
-      <section >
-          <h2>Selected Image</h2>
-          <img id="selected-image"  width="180" alt="" [src]="filePath"/>
-
-          <h2>Predictions</h2>
-          <ol id="prediction-list"></ol>
-          <ol>
-            <li *ngFor="let prediction of predictions">{{prediction | json}}</li>
-          </ol>
-      </section>
-    </div>
+        <h2>Predictions</h2>
+        <ol id="prediction-list"></ol>
+        <ol>
+          <li *ngFor="let prediction of predictions">{{prediction | json}}</li>
+        </ol>
+    </section>
   </div>
 </div>
 

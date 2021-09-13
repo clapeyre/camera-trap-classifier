@@ -1,15 +1,13 @@
-.content-outer-container {
-  min-height: calc(100vh - 160px);
-  max-height: calc(100vh - 128px);
-}
-
-.intro {
+.container {
   display: flex;
-  font-size: 54px;
-  font-weight: 900;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100% - 128px);
 }
 
-.footer {
-  position: absolute;
-  bottom: 64px;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
 }
