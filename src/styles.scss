@@ -100,9 +100,29 @@ app-navbar {
   top: 0px;
 }
 
-a {
+.mat-toolbar {
+  align-content: center;
+  padding: 0 50px;
+}
+
+.mat-toolbar a {
+  display: flex;
+  height: 100%;
   text-decoration: none;
 }
-a:visited {
+
+.mat-toolbar a span {
+  padding: 16px 10px;
+}
+
+.mat-toolbar img {
+  height: 100%;
+}
+
+.mat-toolbar a:visited {
   color:rgba(white, 0.87);
+}
+
+.mat-toolbar span {
+  margin: 0 10px;
 }

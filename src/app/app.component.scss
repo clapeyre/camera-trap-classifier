@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   height: calc(100% - 128px);
+  margin: 0 50px;
 }
 
 .wrapper {
@@ -10,4 +11,8 @@
   flex-direction: column;
   justify-content: space-around;
   height: 100%;
+}
+
+button {
+  margin: 0 10px;
 }
