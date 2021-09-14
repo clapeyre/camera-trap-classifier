@@ -111,6 +111,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     data.push(this.predictions);
     this.dataSource.data = data;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   ngAfterViewInit() {
