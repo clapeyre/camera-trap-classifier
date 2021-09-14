@@ -7,7 +7,6 @@ import * as tf from '@tensorflow/tfjs'
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import {MatTable} from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -85,7 +84,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.predictions = Array.from(predictResult)
       .map( (p, i) => {
         return {
-          probability: p,
+          probability: parseFloat(p.toFixed(2)),
           className: this.result[i]
         }
     })

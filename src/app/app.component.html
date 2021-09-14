@@ -19,58 +19,50 @@
     <section >
         <h2>Selected Image</h2>
         <img id="selected-image"  width="180" alt="" [src]="filePath"/>
-
-        <h2>Predictions</h2>
-        <ol id="prediction-list"></ol>
-        <ol>
-          <!-- <li *ngFor="let prediction of predictions">{{prediction | json}}</li> -->
-        </ol>
     </section>
   </div>
 
 
-  <mat-form-field appearance="standard">
+  <mat-form-field appearance="standard" color="accent">
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ours" #input>
   </mat-form-field>
 
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort #matTable fixedLayout="true">
+    <table mat-table [dataSource]="dataSource" matSort fixedLayout="true">
 
-      <!-- ID Column -->
+      <!-- File Name Column -->
       <ng-container matColumnDef="fileName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> File Name </th>
         <td mat-cell *matCellDef="let row"> {{row.fileName}} </td>
       </ng-container>
 
 
-      <!-- ID Column -->
+      <!-- Preview Column -->
       <ng-container matColumnDef="preview">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> preview </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Preview </th>
         <td mat-cell *matCellDef="let row"> <img width="90" [src]="row.filePath" /> </td>
       </ng-container>
 
-
-
-      <!-- Progress Column -->
+      <!-- blaireau Column -->
       <ng-container matColumnDef="blaireau">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Blaireau </th>
         <td mat-cell *matCellDef="let row"> {{row.blaireau}} </td>
       </ng-container>
 
-      <!-- Name Column -->
+      <!-- brebis Column -->
       <ng-container matColumnDef="brebis">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Brebis </th>
         <td mat-cell *matCellDef="let row"> {{row.brebis}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- cervide Column -->
       <ng-container matColumnDef="cervide">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Cervide </th>
         <td mat-cell *matCellDef="let row"> {{row.cervide}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- chat Column -->
       <ng-container matColumnDef="chat">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Chat </th>
         <td mat-cell *matCellDef="let row"> {{row.chat}} </td>
@@ -82,120 +74,108 @@
         <td mat-cell *matCellDef="let row"> {{row.cheval}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- chevreuil Column -->
       <ng-container matColumnDef="chevreuil">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Chevreuil </th>
         <td mat-cell *matCellDef="let row"> {{row.chevreuil}} </td>
       </ng-container>
 
 
-      <!-- Fruit Column -->
+      <!-- chevre Column -->
       <ng-container matColumnDef="chevre">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Chèvre </th>
         <td mat-cell *matCellDef="let row"> {{row.chevre}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- chien Column -->
       <ng-container matColumnDef="chien">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Chien </th>
         <td mat-cell *matCellDef="let row"> {{row.chien}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- daim Column -->
       <ng-container matColumnDef="daim">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Daom </th>
         <td mat-cell *matCellDef="let row"> {{row.daim}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- ecureuil Column -->
       <ng-container matColumnDef="ecureuil">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Ecureuil </th>
         <td mat-cell *matCellDef="let row"> {{row.ecureuil}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- humain Column -->
       <ng-container matColumnDef="humain">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Humain </th>
         <td mat-cell *matCellDef="let row"> {{row.humain}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- isard Column -->
       <ng-container matColumnDef="isard">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Isard </th>
         <td mat-cell *matCellDef="let row"> {{row.isard}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- lievre Column -->
       <ng-container matColumnDef="lievre">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Lièvre </th>
         <td mat-cell *matCellDef="let row"> {{row.lievre}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- marmotte Column -->
       <ng-container matColumnDef="marmotte">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Marmotte </th>
         <td mat-cell *matCellDef="let row"> {{row.marmotte}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- martre Column -->
       <ng-container matColumnDef="martre">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Martre </th>
         <td mat-cell *matCellDef="let row"> {{row.martre}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- oiseaux Column -->
       <ng-container matColumnDef="oiseaux">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Oiseaux </th>
         <td mat-cell *matCellDef="let row"> {{row.oiseaux}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- ours Column -->
       <ng-container matColumnDef="ours">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Ours </th>
         <td mat-cell *matCellDef="let row"> {{row.ours}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- renard Column -->
       <ng-container matColumnDef="renard">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Renard </th>
         <td mat-cell *matCellDef="let row"> {{row.renard}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- rien Column -->
       <ng-container matColumnDef="rien">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Rien </th>
         <td mat-cell *matCellDef="let row"> {{row.rien}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- sanglier Column -->
       <ng-container matColumnDef="sanglier">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Sanglier </th>
         <td mat-cell *matCellDef="let row"> {{row.sanglier}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- tetras Column -->
       <ng-container matColumnDef="tetras">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Tetras </th>
         <td mat-cell *matCellDef="let row"> {{row.tetras}} </td>
       </ng-container>
 
-      <!-- Fruit Column -->
+      <!-- vache Column -->
       <ng-container matColumnDef="vache">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Vache </th>
         <td mat-cell *matCellDef="let row"> {{row.vache}} </td>
       </ng-container>
-
-
-
-
-
-
-
-
-
-
-
-
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
