@@ -65,3 +65,9 @@ export const EMPTY_PREDICTION: Prediction[] = [{fileName: 'DSC0001', preview: ''
 cheval: 0, chevreuil: 0, chevre: 0, chien: 0, daim: 0, ecureuil: 0, humain: 0,
 isard: 0, lievre: 0, marmotte: 0, martre: 0, oiseaux: 0, ours: 0, renard: 0,
 rien: 0, sanglier: 0, tetras: 0, vache: 0}];
+
+export const DISPLAYED_COLUMNS: string[] = [
+  'fileName', 'preview', 'blaireau', 'brebis', 'cervide', 'chat', 'cheval', 'chevreuil', 'chevre',
+  'chien', 'daim', 'ecureuil', 'humain', 'isard', 'lievre', 'marmotte',
+'martre', 'oiseaux', 'ours', 'renard', 'rien', 'sanglier', 'tetras', 'vache'
+];
