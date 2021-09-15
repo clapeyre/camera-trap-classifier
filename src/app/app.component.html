@@ -1,18 +1,19 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-  <div *ngIf="loadingModel">
+  <div *ngIf="loadingModel" style="align-self: center;">
     <p>Loading the AI</p>
     <mat-spinner color="accent"></mat-spinner>
   </div>
 
   <div *ngIf="!loadingModel" class="wrapper">
     <main>
-        <h1> Classify your wild animal photos</h1>
-        <button mat-raised-button color="primary" (click)="fileInput.click()">Select Files</button>
-        <input hidden #fileInput type="file" accept="image/*" multiple (change)="loadInputFiles($event)" />
-        <button mat-raised-button color="accent" id="predictBtn" [disabled]="!filePath" (click)="predictionLoop()">Predict</button>
+      <h1> Classify your wild animal photos</h1>
+      <button mat-raised-button color="primary" (click)="fileInput.click()">Select Files</button>
+      <input hidden #fileInput type="file" accept="image/*" multiple (change)="loadInputFiles($event)" />
+      <button mat-raised-button color="accent" id="predictBtn" [disabled]="filePath.length == 0" (click)="predictionLoop()">Predict</button>
     </main>
+      <p *ngIf="filePath.length !== 0">{{filePath.length}} pictures selected</p>
 
     <mat-divider></mat-divider>
 
