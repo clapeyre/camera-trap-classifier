@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 
 
@@ -39,7 +40,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTableExporterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

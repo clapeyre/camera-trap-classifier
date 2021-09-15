@@ -25,6 +25,7 @@
     "@angular/router": "~12.1.1",
     "@tensorflow/tfjs": "^3.9.0",
     "express": "^4.17.1",
+    "mat-table-exporter": "^10.2.3",
     "rxjs": "~6.6.0",
     "save": "^2.4.0",
     "tslib": "^2.2.0",
