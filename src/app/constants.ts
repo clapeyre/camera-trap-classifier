@@ -5,11 +5,11 @@ export interface Animaux {
 export const RESULT: Animaux = {
   '0':  'Blaireau',
   '1':  'Brebis',
-  '2':  'Cervide-cerf',
+  '2':  'Cervide',
   '3':  'Chat',
   '4':  'Cheval',
   '5':  'Chevreuil',
-  '6':  'Chèvre',
+  '6':  'Chevre',
   '7':  'Chien',
   '8':  'Daim',
   '9':  'Ecureuil',

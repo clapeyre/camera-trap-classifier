@@ -27,6 +27,19 @@ table {
   width: 100%;
 }
 
+.export {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    margin: 30px 15px;
+  }
+}
+
+table button {
+  text-align: right;
+}
+
 .mat-form-field {
   font-size: 14px;
   width: 100%;
@@ -34,4 +47,10 @@ table {
 
 td, th {
   width: 25%;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
