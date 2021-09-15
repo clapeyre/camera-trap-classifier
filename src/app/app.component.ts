@@ -89,7 +89,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       .div(255)
       .reverse(-1);
     let predictResult = await (this.model.predict(pre_image) as tf.Tensor).data();
-    console.table(predictResult);
+    console.table({predictResult});
     this.predictions = Array.from(predictResult)
       .map( (p, i) => {
         return {
@@ -109,7 +109,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       return map;
     }, {})
 
-    this.predictions['fileName'] = fileName.length > 8 ? `${fileName.substr(0,4)}...${fileName.substr(-1,3)}` : fileName;
+    this.predictions['fileName'] = fileName;
     this.predictions['preview'] = this.sanitizer.bypassSecurityTrustUrl(image.src);
 
     let data = this.dataSource.data;

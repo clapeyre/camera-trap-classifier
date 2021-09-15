@@ -48,3 +48,9 @@ table button {
 td, th {
   width: 25%;
 }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
