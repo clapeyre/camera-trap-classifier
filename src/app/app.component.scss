@@ -1,18 +1,37 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: calc(100% - 128px);
+  justify-content: flex-start;
+  min-height: calc(100% - 128px);
+  height: auto;
+  overflow: auto;
   margin: 0 50px;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   height: 100%;
+}
+
+main {
+  margin: 15px 0;
 }
 
 button {
   margin: 0 10px;
+}
+
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
 }
