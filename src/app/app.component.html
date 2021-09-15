@@ -42,134 +42,134 @@
           <!-- blaireau Column -->
           <ng-container matColumnDef="blaireau">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Blaireau </th>
-            <td mat-cell *matCellDef="let row"> {{row.blaireau | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.blaireau !== 0">{{row.blaireau | percent}} </span></td>
           </ng-container>
 
           <!-- brebis Column -->
           <ng-container matColumnDef="brebis">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Brebis </th>
-            <td mat-cell *matCellDef="let row"> {{row.brebis | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.brebis !== 0">{{row.brebis | percent}} </span></td>
           </ng-container>
 
           <!-- cervide Column -->
           <ng-container matColumnDef="cervide">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Cervide </th>
-            <td mat-cell *matCellDef="let row"> {{row.cervide | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.cervide !== 0">{{row.cervide | percent}} </span></td>
           </ng-container>
 
           <!-- chat Column -->
           <ng-container matColumnDef="chat">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Chat </th>
-            <td mat-cell *matCellDef="let row"> {{row.chat | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.chat !== 0">{{row.chat | percent}} </span></td>
           </ng-container>
 
           <!-- Fruit Column -->
           <ng-container matColumnDef="cheval">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Cheval </th>
-            <td mat-cell *matCellDef="let row"> {{row.cheval | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.cheval !== 0">{{row.cheval | percent}} </span></td>
           </ng-container>
 
           <!-- chevreuil Column -->
           <ng-container matColumnDef="chevreuil">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Chevreuil </th>
-            <td mat-cell *matCellDef="let row"> {{row.chevreuil | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.chevreuil !== 0">{{row.chevreuil | percent}} </span></td>
           </ng-container>
 
 
           <!-- chevre Column -->
           <ng-container matColumnDef="chevre">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Chèvre </th>
-            <td mat-cell *matCellDef="let row"> {{row.chevre | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.chevre !== 0">{{row.chevre | percent}} </span></td>
           </ng-container>
 
           <!-- chien Column -->
           <ng-container matColumnDef="chien">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Chien </th>
-            <td mat-cell *matCellDef="let row"> {{row.chien | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.chien !== 0">{{row.chien | percent}} </span></td>
           </ng-container>
 
           <!-- daim Column -->
           <ng-container matColumnDef="daim">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Daom </th>
-            <td mat-cell *matCellDef="let row"> {{row.daim | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.daim !== 0">{{row.daim | percent}} </span></td>
           </ng-container>
 
           <!-- ecureuil Column -->
           <ng-container matColumnDef="ecureuil">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Ecureuil </th>
-            <td mat-cell *matCellDef="let row"> {{row.ecureuil | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.ecureuil !== 0">{{row.ecureuil | percent}} </span></td>
           </ng-container>
 
           <!-- humain Column -->
           <ng-container matColumnDef="humain">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Humain </th>
-            <td mat-cell *matCellDef="let row"> {{row.humain | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.humain !== 0">{{row.humain | percent}} </span></td>
           </ng-container>
 
           <!-- isard Column -->
           <ng-container matColumnDef="isard">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Isard </th>
-            <td mat-cell *matCellDef="let row"> {{row.isard | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.isard !== 0">{{row.isard | percent}} </span></td>
           </ng-container>
 
           <!-- lievre Column -->
           <ng-container matColumnDef="lievre">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Lièvre </th>
-            <td mat-cell *matCellDef="let row"> {{row.lievre | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.lievre !== 0">{{row.lievre | percent}} </span></td>
           </ng-container>
 
           <!-- marmotte Column -->
           <ng-container matColumnDef="marmotte">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Marmotte </th>
-            <td mat-cell *matCellDef="let row"> {{row.marmotte | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.marmotte !== 0">{{row.marmotte | percent}} </span></td>
           </ng-container>
 
           <!-- martre Column -->
           <ng-container matColumnDef="martre">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Martre </th>
-            <td mat-cell *matCellDef="let row"> {{row.martre | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.martre !== 0">{{row.martre | percent}} </span></td>
           </ng-container>
 
           <!-- oiseaux Column -->
           <ng-container matColumnDef="oiseaux">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Oiseaux </th>
-            <td mat-cell *matCellDef="let row"> {{row.oiseaux | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.oiseaux !== 0">{{row.oiseaux | percent}} </span></td>
           </ng-container>
 
           <!-- ours Column -->
           <ng-container matColumnDef="ours">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Ours </th>
-            <td mat-cell *matCellDef="let row"> {{row.ours | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.ours !== 0">{{row.ours | percent}} </span></td>
           </ng-container>
 
           <!-- renard Column -->
           <ng-container matColumnDef="renard">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Renard </th>
-            <td mat-cell *matCellDef="let row"> {{row.renard | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.renard !== 0">{{row.renard | percent}} </span></td>
           </ng-container>
 
           <!-- rien Column -->
           <ng-container matColumnDef="rien">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Rien </th>
-            <td mat-cell *matCellDef="let row"> {{row.rien | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.rien !== 0">{{row.rien | percent}} </span></td>
           </ng-container>
 
           <!-- sanglier Column -->
           <ng-container matColumnDef="sanglier">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Sanglier </th>
-            <td mat-cell *matCellDef="let row"> {{row.sanglier | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.sanglier !== 0">{{row.sanglier | percent}} </span></td>
           </ng-container>
 
           <!-- tetras Column -->
           <ng-container matColumnDef="tetras">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Tetras </th>
-            <td mat-cell *matCellDef="let row"> {{row.tetras | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.tetras !== 0">{{row.tetras | percent}} </span></td>
           </ng-container>
 
           <!-- vache Column -->
           <ng-container matColumnDef="vache">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Vache </th>
-            <td mat-cell *matCellDef="let row"> {{row.vache | percent}} </td>
+            <td mat-cell *matCellDef="let row"> <span *ngIf="row.vache !== 0">{{row.vache | percent}} </span></td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

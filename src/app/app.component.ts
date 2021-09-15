@@ -89,12 +89,20 @@ export class AppComponent implements OnInit, AfterViewInit {
       .div(255)
       .reverse(-1);
     let predictResult = await (this.model.predict(pre_image) as tf.Tensor).data();
+    console.table(predictResult);
     this.predictions = Array.from(predictResult)
       .map( (p, i) => {
         return {
-          probability: parseFloat(p.toFixed(2)),
+          probability: parseFloat(p.toFixed(3)),
           className: this.result[i]
         }
+    }).sort(function (a, b) {
+			return b.probability - a.probability;
+    }).map((p, i) => {
+      return {
+        probability: i > 5 ? 0 : p.probability,
+        className: p.className
+      }
     })
     .reduce((map: {[key: string]: number}, obj: {probability: number, className: string}) => {
       map[obj.className.toLowerCase()] = obj.probability;
