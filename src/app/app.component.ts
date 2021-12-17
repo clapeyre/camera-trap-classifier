@@ -1,9 +1,9 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core'
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { Prediction, RESULT, EMPTY_PREDICTION, DISPLAYED_COLUMNS } from './constants';
 
-import * as tf from '@tensorflow/tfjs'
+import * as tf from '@tensorflow/tfjs';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -14,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  title = 'angular-app'
+  title = 'angular-app';
 
   filePath: string[] = [];
   currentFileName: string;
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   loadingModel: Boolean = true;
   tableReady: Boolean = false;
-  model: tf.LayersModel
+  model: tf.LayersModel;
 
   result = RESULT;
   order: Array<any>;
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   async loadModel() {
-    this.model = await tf.loadLayersModel('/assets/model.json')
+    this.model = await tf.loadLayersModel('/assets/model.json');
     this.loadingModel = false;
   }
 
@@ -95,19 +95,19 @@ export class AppComponent implements OnInit, AfterViewInit {
         return {
           probability: parseFloat(p.toFixed(3)),
           className: this.result[i]
-        }
+        };
     }).sort(function (a, b) {
 			return b.probability - a.probability;
     }).map((p, i) => {
       return {
         probability: i > 5 ? 0 : p.probability,
         className: p.className
-      }
+      };
     })
     .reduce((map: {[key: string]: number}, obj: {probability: number, className: string}) => {
       map[obj.className.toLowerCase()] = obj.probability;
       return map;
-    }, {})
+    }, {});
 
     this.predictions['fileName'] = fileName;
     this.predictions['preview'] = this.sanitizer.bypassSecurityTrustUrl(image.src);
