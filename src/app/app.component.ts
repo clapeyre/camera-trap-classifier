@@ -20,6 +20,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   currentFileName: string;
   fileNames: string[] = [];
   images: HTMLImageElement[] = [];
+  blob: any[] = [];
+  filesQuantity: number = -1;
 
   loadingModel: Boolean = true;
   tableReady: Boolean = false;
@@ -37,6 +39,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  fileSize: any[];
 
 
   constructor(private  sanitizer: DomSanitizer) {
@@ -55,33 +58,38 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   loadInputFiles(e: Event) {
     const files = (e.target as HTMLInputElement).files!;
-    this.fileNames = [];
-    this.filePath = [];
-    this.images = [];
+    this.filesQuantity = files.length
+    // console.log({files});
+    this.blob = [];
 
     Object.keys(files).forEach((key, index) => {
-      this.fileNames.push(files[index].name);
-    const reader = new FileReader()
-    reader.onload = () => {
-        this.filePath.push( reader.result as string);
-        this.images.push(new Image());
-    }
-      reader.readAsDataURL(files[index])
-    })
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.blob.push({
+          image: new Image(),
+          name: files[index].name,
+          path: reader.result as String
+        });
+        // console.log('Blob loading', index, this.blob);
+      };
+      reader.readAsDataURL(files[index]);
+    });
+    // console.log({qnt: this.filesQuantity, loaded: this.blob.length});
   }
 
-  predictionLoop() {
-    this.filePath.forEach((file, index) => {
-      this.images[index].src = file;
+  predictionLoop() {;
+    this.blob.forEach((object) => {
+      // console.log('Blob forEach', object);
+      object.image.onload = () => {
+        // console.log('from image onload', object);
+        this.predict(object.image, object.name)
+      }
+      object.image.src = object.path
     })
-    this.images.forEach((x, index) => {
-      x.onload = () => {
-        this.predict(x, this.fileNames[index]);
-      };
-    });
   }
 
   async predict(image: HTMLImageElement, fileName: string) {
+    // console.log('from predict', image, fileName)
     let pre_image = tf.browser.fromPixels(image, 3)
       .resizeNearestNeighbor([224, 224])
       .expandDims()
@@ -96,18 +104,17 @@ export class AppComponent implements OnInit, AfterViewInit {
           probability: parseFloat(p.toFixed(3)),
           className: this.result[i]
         };
-    }).sort(function (a, b) {
-			return b.probability - a.probability;
-    }).map((p, i) => {
-      return {
-        probability: i > 5 ? 0 : p.probability,
-        className: p.className
-      };
-    })
-    .reduce((map: {[key: string]: number}, obj: {probability: number, className: string}) => {
-      map[obj.className.toLowerCase()] = obj.probability;
-      return map;
-    }, {});
+      }).sort(function (a, b) {
+        return b.probability - a.probability;
+      }).map((p, i) => {
+        return {
+          probability: i > 5 ? 0 : p.probability,
+          className: p.className
+        };
+      }).reduce((map: {[key: string]: number}, obj: {probability: number, className: string}) => {
+        map[obj.className.toLowerCase()] = obj.probability;
+        return map;
+      }, {});
 
     this.predictions['fileName'] = fileName;
     this.predictions['preview'] = this.sanitizer.bypassSecurityTrustUrl(image.src);
