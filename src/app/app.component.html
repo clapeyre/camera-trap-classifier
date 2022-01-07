@@ -11,9 +11,9 @@
       <h1> Classify your wild animal photos</h1>
       <button mat-raised-button color="primary" (click)="fileInput.click()">Select Files</button>
       <input hidden #fileInput type="file" accept="image/*" multiple (change)="loadInputFiles($event)" />
-      <button mat-raised-button color="accent" id="predictBtn" [disabled]="filePath.length == 0" (click)="predictionLoop()">Predict</button>
+      <button mat-raised-button color="accent" id="predictBtn" [disabled]="blob.length != filesQuantity" (click)="predictionLoop()">Predict</button>
     </main>
-      <p *ngIf="filePath.length !== 0">{{filePath.length}} pictures selected</p>
+      <p *ngIf="filesQuantity > 0">{{filesQuantity}} pictures selected</p>
 
     <mat-divider></mat-divider>
 
