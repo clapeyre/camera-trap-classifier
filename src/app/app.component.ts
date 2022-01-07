@@ -68,17 +68,18 @@ export class AppComponent implements OnInit, AfterViewInit {
       };
       reader.readAsDataURL(files[index]);
     });
-    console.log({qnt: this.filesQuantity, loaded: this.blob.length});
+    console.log('After selection', {qnt: this.filesQuantity, loaded: this.blob.length});
   }
 
   predictionLoop() {;
+    console.log('At start of prediction', {qnt: this.filesQuantity, loaded: this.blob.length});
     this.blob.forEach((object) => {
       // console.log('Blob forEach', object);
       object.image.onload = () => {
         // console.log('from image onload', object);
-        this.predict(object.image, object.name)
+        this.predict(object.image, object.name);
       }
-      object.image.src = object.path
+      object.image.src = object.path;
     })
   }
 
@@ -91,7 +92,10 @@ export class AppComponent implements OnInit, AfterViewInit {
       .div(255)
       .reverse(-1);
     let predictResult = await (this.model.predict(pre_image) as tf.Tensor).data();
-    console.table({predictResult});
+    console.groupCollapsed(fileName);
+      console.table({predictResult});
+    console.groupEnd();
+
     this.predictions = Array.from(predictResult)
       .map( (p, i) => {
         return {
