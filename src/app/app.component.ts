@@ -16,10 +16,6 @@ import { MatTableDataSource } from '@angular/material/table';
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'angular-app';
 
-  filePath: string[] = [];
-  currentFileName: string;
-  fileNames: string[] = [];
-  images: HTMLImageElement[] = [];
   blob: any[] = [];
   filesQuantity: number = -1;
 
@@ -28,7 +24,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   model: tf.LayersModel;
 
   result = RESULT;
-  order: Array<any>;
 
   predictResult: Uint8Array | Float32Array | Int32Array;
 
@@ -39,7 +34,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  fileSize: any[];
 
 
   constructor(private  sanitizer: DomSanitizer) {
@@ -74,7 +68,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       };
       reader.readAsDataURL(files[index]);
     });
-    // console.log({qnt: this.filesQuantity, loaded: this.blob.length});
+    console.log({qnt: this.filesQuantity, loaded: this.blob.length});
   }
 
   predictionLoop() {;
